@@ -260,7 +260,7 @@ bot.launch();
 
 
 // Set up webhook
-bot.telegram.setWebhook('https://60b9-94-140-138-143.eu.ngrok.io');
+bot.telegram.setWebhook('https://ratingranger.site/');
 
 // Bind to Express app
 app.use(bot.webhookCallback('/'));
