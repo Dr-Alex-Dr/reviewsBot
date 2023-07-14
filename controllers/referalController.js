@@ -36,7 +36,10 @@ async function addReferal(referralUserId) {
     
 }
 
-// реферальная система 
+/**
+ * Функция добавляет реферала
+ * @param {object} ctx - Информация о сообщении
+ */
 async function Referal(ctx) {
     try {
         const referralUserId = parseInt(ctx.message.text.split(' ')[1]); // получаем id пользователя, который отправил ссылку  

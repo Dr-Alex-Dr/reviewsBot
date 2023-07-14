@@ -2,7 +2,11 @@ require('dotenv').config();
 const conn = require('../db').promise();
 const { Referal } = require('./referalController');
 
-// добавляем пользователя если его нет, если есть, то обнуляем stateSession
+/**
+ * функция регестрирует нового пользователя
+ * @param {number} ctx - Информация о сообщении
+ * @description Проверяем существует ли пользователь, если нет, то регестрируем
+ */
 async function AddUser(ctx) {
     try {
         // существует ли пользователь

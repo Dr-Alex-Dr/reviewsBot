@@ -19,6 +19,7 @@
     "nodemon": "^2.0.22",
     "openai": "^3.2.1",
     "telegraf": "^3.38.0",
-    "telegram-keyboard": "^2.3.2"
+    "telegram-keyboard": "^2.3.2",
+    "xlsx": "^0.18.5"
   }
 }

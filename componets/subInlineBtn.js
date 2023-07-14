@@ -1,17 +1,22 @@
 require('dotenv').config();
+const { ReadCellValue } = require('../controllers/ReadCellValue')
 
-// кнопки с информацией о подписке (цена завист от количества рефералов)
+/**
+ * Функция создает кнопки с ценами о подписке (цена завист от количества рефералов)
+ * @param {object} userInfo - Информация о подписке
+ * @returns {object} Кнопки с ценами
+ */
 async function SubInlineBtn(userInfo) {
     return {
         reply_markup: {
             inline_keyboard: [
                 [
-                    { text: `на один месяц ${Number(process.env.SUB_ON_MONTH) - userInfo[0].count_referal * 0.1 * Number(process.env.SUB_ON_MONTH)} Руб`, callback_data: "one_month" }, 
-                    { text: `на три месяца ${Number(process.env.SUB_ON_THREE_MONTH) - userInfo[0].count_referal * 0.1 * Number(process.env.SUB_ON_THREE_MONTH)} Руб`, callback_data: "three_month" },
+                    { text: `${ReadCellValue('E3')} ${Number(ReadCellValue('E4')) - userInfo[0].count_referal * 0.1 * Number(ReadCellValue('E4'))} Руб`, callback_data: "one_month" }, 
+                    { text: `${ReadCellValue('E6')} ${Number(ReadCellValue('E7')) - userInfo[0].count_referal * 0.1 * Number(ReadCellValue('E7'))} Руб`, callback_data: "three_month" },
                 ],
                 [ 
-                    { text: `на пол года ${Number(process.env.SUB_ON_HALF_YEAR) - userInfo[0].count_referal * 0.1 * Number(process.env.SUB_ON_HALF_YEAR)} Руб`, callback_data: "half_year" },
-                    { text: `на один год ${Number(process.env.SUB_ON_YEAR) - userInfo[0].count_referal * 0.1 * Number(process.env.SUB_ON_YEAR)} Руб`, callback_data: "one_yaer" }
+                    { text: `${ReadCellValue('E9')} ${Number(ReadCellValue('E10')) - userInfo[0].count_referal * 0.1 * Number(ReadCellValue('E10'))} Руб`, callback_data: "half_year" },
+                    { text: `${ReadCellValue('E12')} ${Number(ReadCellValue('E13')) - userInfo[0].count_referal * 0.1 * Number(ReadCellValue('E13'))} Руб`, callback_data: "one_yaer" }
                 ],
             ]
         }

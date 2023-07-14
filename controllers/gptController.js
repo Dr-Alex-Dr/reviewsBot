@@ -1,13 +1,12 @@
-// добавить обработку ошибок
-
-require('dotenv').config()
+require('dotenv').config();
+const { ReadCellValue } = require('./ReadCellValue');
 const { Configuration, OpenAIApi } = require("openai");
 
-
-const openai = new OpenAIApi(
-    new Configuration({ apiKey: process.env.OPENAI_API_KEY })
-);
-
+/**
+ * Функция регестрирует gpt
+ * @param {number} prompt - Promt для gpt
+ * @returns {string} Ответ gpt
+ */
 async function GPTController(prompt) {
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
@@ -17,8 +16,12 @@ async function GPTController(prompt) {
         temperature: Number(process.env.TEMPERATURE),
     });
     
-    const response = completion?.data?.choices?.[0]?.message?.content;
+    const response = completion.data.choices[0].message.content;
     return response;
 }
+
+const openai = new OpenAIApi(
+    new Configuration({ apiKey: ReadCellValue('H2') })
+);
 
 module.exports = { GPTController }

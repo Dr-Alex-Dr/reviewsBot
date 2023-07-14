@@ -1,7 +1,11 @@
 require('dotenv').config();
 const conn = require('../db').promise();
 
-// функция проверяет наличие попыток в бесплатной версии
+/**
+ * функция проверяет наличие бесплатных попыток
+ * @param {number} ctx - Информация о сообщении
+ * @returns {object} Если есть бесплатные попытки, то выводит информацию о пользователе и true, иначе false
+ */
 async function CheckNumberAttempts(ctx) {
     try {
         // данные пользователя 

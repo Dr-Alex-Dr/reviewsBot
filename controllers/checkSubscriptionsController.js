@@ -2,7 +2,11 @@ require('dotenv').config();
 const conn = require('../db').promise();
 const moment = require('moment');
 
-// функция проверяет наличие подписки и если есть, то выводит информацию о ней
+/**
+ * функция проверяет наличие подписки
+ * @param {number} userId - id пользователя
+ * @returns {object} Если есть подписка, то выводит информацию о пользователе и true, иначе false
+ */
 async function CheckSubscriptions(userId) {
     try {
         // данные о подписке пользователя
